@@ -44,6 +44,13 @@
         .container {
             max-width: 1200px;
         }
+        .book-image {
+            width: 150px;
+            height: 200px;
+            object-fit: contain;
+            margin: 0 auto; /* Center the image horizontally */
+            display: block; /* Remove extra spacing */
+        }
     </style>
 </head>
 <body style="background-color: black">
@@ -66,10 +73,6 @@
                     <a class="nav-link text-white" href="#">Contact</a>
                 </li>
             </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-light" type="submit">Search</button>
-            </form>
         </div>
     </div>
 </nav>
@@ -88,12 +91,14 @@
     <div class="row mt-5">
         {% if data %}
             {% for i in data %}
-                <div class="col-md-3">
-                    <div class="card">
-                        <img class="card-img-top" src="{{ i[2] }}" alt="Book Image">
-                        <div class="card-body">
-                            <h5 class="card-title text-white">{{ i[0] }}</h5>
-                            <p class="card-text text-white">{{ i[1] }}</p>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="d-flex flex-column align-items-center">
+                            <img class="card-img-top book-image" src="{{ i[2] }}" alt="Book Image">
+                            <div class="card-body text-center">
+                                <h5 class="card-title text-white">{{ i[0] }}</h5>
+                                <p class="card-text text-white">{{ i[1] }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>

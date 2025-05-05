@@ -18,7 +18,7 @@
             overflow: hidden;
         }
         .navbar {
-            margin-bottom: 30px;
+            margin-bottom: 0; 
         }
         footer {
             background-color: #00a65a;
@@ -51,31 +51,21 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Pustakalaya</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Pustakalaya</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" aria-current="page" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="/recommend">Recommend</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Contact</a>
-                    </li>
-                </ul>
-                <form class="d-flex mt-3" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-light" type="submit">Search</button>
-                </form>
-            </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 flex-column"> 
+                <li class="nav-item">
+                    <a class="nav-link text-white" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/recommend">Recommend</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#">Contact</a>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>
@@ -88,7 +78,7 @@
     </div>
     <div class="row">
         {% for i in range(book_name|length) %}
-            <div class="col-md-3">
+            <div class="col-md-2 d-flex flex-column align-items-center">
                 <div class="card">
                     <img class="card-img-top" src="{{ image[i] }}" alt="Book Image">
                     <div class="card-body">
@@ -99,6 +89,9 @@
                     </div>
                 </div>
             </div>
+            {% if (i + 1) % 5 == 0 %}
+                </div><div class="row">
+            {% endif %}
         {% endfor %}
     </div>
 </div>
