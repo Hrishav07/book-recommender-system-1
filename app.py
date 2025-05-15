@@ -27,7 +27,6 @@ def recommend_ui():
 def recommend():
     user_input = request.form.get('user_input')
     
-    # Check if the user_input exists in the pt index
     if user_input not in pt.index:
         return "Book not found", 404
     
